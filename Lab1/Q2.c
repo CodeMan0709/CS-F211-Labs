@@ -26,6 +26,18 @@ int main()
             scanf("%d",&mux_b[i][j]);
         }
     }
+    int row=0;
+    int colm=0;
+    if(m>=p && n>=q)
+    {
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                
+            }
+        }
+    }
 
     
 
