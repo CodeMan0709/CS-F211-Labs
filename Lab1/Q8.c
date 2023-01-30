@@ -15,15 +15,6 @@ void rev(char* arr,int left,int right)
     }
 }
 
-void print(char* arr,int left,int right)
-{
-    for(int i=left;i<right;i++)
-    {
-        printf("%c",arr[i]);
-    }
-    printf(" ");
-}
-
 int main()
 {
     char str[100];
@@ -45,6 +36,9 @@ int main()
     puts(str);
     start=0;
     end=1;
+    int first=1;
+    int check=1;
+    
     for(int i=0;i<=l;i++)
     {
         if((str[i]==' ') || (str[i]==0))
@@ -54,8 +48,10 @@ int main()
             while(str[j]!= ' ' && (str[j]!=0))
             {
                 if(str[j]!=copy[j])
-                {end=0;
-                break;}
+                {
+                end=0;
+                break;
+                }
                 j++;
             }   
             if(end)
@@ -64,13 +60,19 @@ int main()
             while(str[j]!= ' ' && (str[j]!=0))
             {
                 printf("%c",copy[j]);
+                check=0;
                 j++;
             }
             printf(" ");
             }
             end=1;
         }
+        
     }
+    if(check)
+    printf("No Palindromes");
+
+    return 0;
 
 
 }

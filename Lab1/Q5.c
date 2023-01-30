@@ -114,7 +114,7 @@ int main()
         {
             if (arr[i][j] == -1)
             {
-                printf("--  ");
+                printf("-   ");
             }
             else if (arr[i][j] == -2)
             {

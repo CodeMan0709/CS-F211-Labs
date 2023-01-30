@@ -16,7 +16,14 @@ int main()
     printf("Not Pussible");
     return 0;
     }
-    
+
+    int check[a];
+
+    for(int i=0;i<a;i++)
+    {
+        check[i]=0;
+    }
+
     int arr[a];
 
     for(int i=0;i<a;i++)
@@ -28,9 +35,10 @@ int main()
     {
         for(int j=0;j<b;j++)
         {
-            if(s2[i]==s1[j])
+            if(s2[i]==s1[j] && check[j]==0)
             {
             arr[i]=j+1;
+            check[j]=1;
             break;
             }
         }

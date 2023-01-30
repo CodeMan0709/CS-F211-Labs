@@ -54,7 +54,7 @@ int main()
         for(int i=0;i<n;i++)
         {
             if(arr2[i]==true) 
-            printf("%d ",arr[i]);
+            printf("%d ",i);
         }
     }
     else
