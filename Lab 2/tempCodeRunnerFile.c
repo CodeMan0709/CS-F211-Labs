@@ -1,0 +1,2 @@
+freeList(head);
+    // freeList(newList);
