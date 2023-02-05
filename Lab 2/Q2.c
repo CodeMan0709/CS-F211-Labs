@@ -83,13 +83,6 @@ void freeList(Node *head)
     }
 }
 
-void swap(Node* head1, Node* head2)
-{
-    Node * temp=head1;
-    head1=head2;
-    head2=temp;
-}
-
 Node *mergeLists(Node *head1, Node *head2)
 {   
     if(head1==NULL) return head2;
@@ -116,9 +109,7 @@ int main()
 
     Node *merged = mergeLists(head1, head2);
     printList(merged);
-    // freeList(head1);
-    // freeList(head2);
-    // freeList(merged);
+    freeList(merged);
 
     return 0;
 }

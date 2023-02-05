@@ -89,9 +89,9 @@ Node *rearrangeList(Node *head)
         return NULL;
 
     Node *odd = head;
-    Node *oddmax = odd;
+    Node *oddstart = odd;
     Node *even = head->next;
-    Node *evenmax = even;
+    Node *evenstart = even;
 
     while (even != NULL && even->next != NULL)
     {
@@ -101,8 +101,8 @@ Node *rearrangeList(Node *head)
         even = even->next;
     }
 
-    odd->next = evenmax;
-    return oddmax;
+    odd->next = evenstart;
+    return oddstart;
 }
 
 int main()
@@ -111,5 +111,4 @@ int main()
     Node *newList = rearrangeList(head);
     printList(newList);
     freeList(head);
-    freeList(newList);
 }

@@ -129,12 +129,12 @@ Node *sortList(Node *head)
     right=sortList(right);
 
     Node * sort = mergeLists(left,right);
+    return sort;
 }
 int main()
 {
     Node *head = readList();
     Node *sorted = sortList(head);
     printList(sorted);
-    // freeList(head);
-    // freeList(sorted);
+    freeList(head);
 }

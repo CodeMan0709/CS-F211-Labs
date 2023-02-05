@@ -97,6 +97,10 @@ int length(Node * head)
 Node* removeSlide(Node *head, int k)
 {
     Node * temp = head;
+    
+    if(k==0)
+    return head->next;
+
     int count = 1 ;
     while(temp !=NULL && count<k)
     {
@@ -115,8 +119,8 @@ int main()
     Node *head = readList();
     int len = length(head);
     int start= len-k;
+    // printf("%d",start);
     Node *corrected = removeSlide(head, start);
     printList(corrected);
-    // freeList(corrected);
-    // freeList(head);
+    freeList(head);
 }

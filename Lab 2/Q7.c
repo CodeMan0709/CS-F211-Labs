@@ -83,30 +83,68 @@ void freeList(Node *head)
     }
 }
 
-Node * delete(Node * temp)
+Node *delete(Node *temp)
 {
-    Node * del = temp->next;
+    Node *del = temp->next;
     temp->next = del->next;
     return temp;
-    
 }
 
-Node *removeRepeatedNodes(Node *head)
+// Node *removeRepeatedNodes(Node *head)
+// {
+//     if (head==NULL || head->next==NULL)
+//     {
+//         return head;
+//     }
+
+//     int target = head->data;
+
+//     if (head->next->data == target)
+//     {
+//         while (head->next && head->next->data == target)
+//         {
+//             head = head->next;
+//         }
+
+//         head = removeRepeatedNodes(head->next);
+//     }
+
+//     else 
+//     {
+//         head->next = removeRepeatedNodes(head->next);
+//     }
+//     return head;
+// }
+
+Node * removeRepeatedNodes(Node * head)
 {
-    Node * temp =head;
-    while(temp->next!=NULL)
+    Node * dummy = malloc(sizeof(Node));
+    dummy->next=head;
+    Node * prev = dummy;
+
+    while(head != NULL)
     {
-        if(temp->data == temp->next->data)
-        delete(temp);
-        else{temp=temp->next;}
+        if(head->next !=NULL && head->data==head->next->data)
+        {
+            while(head->next != NULL && head->data==head->next->data)
+            {
+                head=head->next;
+            }
+            prev->next=head->next;
+        }
+        else
+        prev=prev->next;
+
+        head=head->next;
     }
-    return head;
+    return dummy->next;
 }
+
 int main()
 {
     Node *head = readList();
     Node *newList = removeRepeatedNodes(head);
     printList(newList);
-    // freeList(head);
+    freeList(head);
     // freeList(newList);
 }

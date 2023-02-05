@@ -14,7 +14,7 @@ Node *createNode(int value)
     assert(newNode != NULL);
     newNode->data = value;
     newNode->next = NULL;
-    return newNode;
+    return newNode; 
 }
 // Creates a new node with given value and adds it to
 // the back of the given singly linked list,

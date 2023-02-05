@@ -1,2 +1,1 @@
-freeList(head);
-    // freeList(newList);
+freeList(merged);
