@@ -127,7 +127,7 @@ int isPalindrome(Node *head)
     Node* p2 = middle->next;
     int ans =0;
 
-    while(p1->next != NULL && p2->next !=NULL)
+    while(p2 !=NULL)
     {
         if(p1->data==p2->data)
         {
@@ -137,8 +137,8 @@ int isPalindrome(Node *head)
         }
         else
         {
-        ans=0;
-        return ans;
+            ans=0;
+            return ans;
         }
     }
     return ans;

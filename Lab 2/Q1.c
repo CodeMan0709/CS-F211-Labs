@@ -11,7 +11,7 @@ typedef struct Node_t Node;
 Node *createNode(int value)
 {
     Node *newNode = malloc(sizeof(Node));
-    assert(newNode != NULL);
+    // assert(newNode != NULL);
     newNode->data = value;
     newNode->next = NULL;
     return newNode;
@@ -86,7 +86,7 @@ void freeList(Node *head)
 int findMedian(Node *head)
 {
     int length = 0;
-    int median = -99;
+    int median;
     Node *temp = head;
     while (temp != NULL)
     {

@@ -94,7 +94,8 @@ Node *mergeLists(Node *head1, Node *head2)
         temp=head1;
         temp->next = mergeLists(head1->next,head2);
     }
-    else{
+    else
+    {
         temp=head2;
         temp->next=mergeLists(head1,head2->next);
     }
