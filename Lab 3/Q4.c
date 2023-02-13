@@ -72,6 +72,7 @@ void twoTeam(Node *head)
     Node *temp = head;
     Node *curleft = head;
     Node *curright = head;
+    int check=0;
     while (curright->next != NULL)
     {
         curright = curright->next;
@@ -85,7 +86,7 @@ void twoTeam(Node *head)
 
         if (lsum == rsum)
         {
-            while(curleft->next->data == curright->prev->data && curleft->next != curright->prev)
+            while(curleft->next->data == curright->prev->data && curleft->next != curright && curright->prev != curleft)
             {
                 curleft=curleft->next;
                 curright=curright->prev;
@@ -93,6 +94,7 @@ void twoTeam(Node *head)
                 right++;
             }
             printf("%d %d", left, right);
+            check=1;
             break;
         }
         else if(lsum<rsum)
@@ -108,6 +110,8 @@ void twoTeam(Node *head)
             right++;
         }
     }
+    if(check==0)
+    printf("NOT POSSIBLE");
 }
 
 int main()

@@ -8,7 +8,6 @@ int occ(int arr[], int n, int ele)
     {
         counter = counter + arr[i] / ele;
     }
-
     return counter;
 }
 
@@ -53,6 +52,7 @@ int main()
         {
             right=mid-1;
         }
+        
         mid = (left+right)/2;
     }
     printf("%d",ans);
