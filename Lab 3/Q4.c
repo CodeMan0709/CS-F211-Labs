@@ -38,6 +38,11 @@ Node *readList()
 {
     long long int n;
     scanf("%lld", &n);
+    if(n==1)
+    {
+    printf("2 Teams not possible");
+    return NULL;
+    }
     Node *head = NULL;
     for (long long int i = 0; i < n; ++i)
     {
