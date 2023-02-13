@@ -1,45 +1,37 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdbool.h>
 
-int last(int arr[], int low, int high, int x, int n)
+int count;
+void uniqueEle(int arr[],int start,int end,bool isdup)
 {
-    if (high >= low)
-    {
-        int mid = low + (high - low) / 2;
-        if ((mid == n - 1 || x < arr[mid + 1]) && arr[mid] == x)
-            return mid;
-        else if (x < arr[mid])
-            return last(arr, low, (mid - 1), x, n);
-        else
-            return last(arr, (mid + 1), high, x, n);
+    if(arr[start]==arr[end]){
+        if(isdup==false)
+        count++;
     }
-    return -1;
+    else{
+        int mid = start+(end-start)/2;
+        uniqueEle(arr,start,mid,isdup);
+        uniqueEle(arr,mid+1,end,arr[mid]==arr[mid+1]);
+    }
+}
+
+int unique(int arr[],int n)
+{
+    uniqueEle(arr,0,n-1,0);
+    return count;
 }
 
 int main()
 {
     int n;
-    scanf("%d", &n);
-    if(n==0)
-    {
-        printf("%d",0);
-        return 0;
-    }
+    scanf("%d",&n);
+
     int arr[n];
-    
-    for (int i = 0; i < n; i++)
+    for(int i=0;i<n;i++)
     {
-        scanf("%d", &arr[i]);
+        scanf("%d",&arr[i]);
     }
 
-    int y = 0;
-    int count = 1;
-
-    for (int i = 0; i < n; i++)
-    {
-        int j = last(arr,i,n-1,arr[i],n);
-        i=j+1;
-        count++;
-    }
-    printf("%d", count);
-    return 0;
+    int ans = unique(arr, n);
+    printf("%d",ans);
 }
