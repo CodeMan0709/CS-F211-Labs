@@ -8,14 +8,17 @@ int main()
 
     long long max, min;
 
-    max = (king - room + 1) * (king - room) / 2 + room - 1;
+    max = (king - room + 1) * (king - room) / 2 ;
 
-    long long k = king / room;
-    long long rem = king % room;
+    long long mini_a = (((king / room) * (king / room - 1)) / 2);
+    long long mini = (room * mini_a) + ((king % room) * (king / room));
+
+    // long long k = king / room;
+    // long long rem = king % room;
     
-    min = rem * (k + 1) * k / 2 + (room - rem) * k * (k - 1) / 2;
+    // min = rem * (k + 1) * k / 2 + (room - rem) * k * (k - 1) / 2;
 
-    printf("%lld %lld\n", min, max);
+    printf("%lld %lld\n", mini, max);
 
     return 0;
 }
