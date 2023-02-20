@@ -1,69 +1,60 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_N 1000005
-
-int n, q;
-int primes[MAX_N];
-char is_prime[MAX_N]; // 0 = not prime, 1 = prime
-
-// prime sieve
-void sieve()
+#include<stdio.h>
+#include<stdbool.h>
+bool isPrime(int x)
 {
-    memset(is_prime, 1, sizeof(is_prime));
-    is_prime[0] = is_prime[1] = 0;
-    int p = 2;
-    while (p * p <= n)
+    if(x==1)
+    return false;
+
+    if(x==2 || x==3)
+    return true;
+
+    if(x%2==0 || x%3==0)
+    return false;
+
+    for(int i=5;i*i<=x;i=i+6)
     {
-        if (is_prime[p])
-        {
-            for (int i = p * p; i <= n; i += p)
-            {
-                is_prime[i] = 0;
-            }
-        }
-        p++;
+        if(x%i==0 || x%(i+2)==0)
+        return false;
     }
+
+    return true;
 }
 
 int main()
 {
-    scanf("%d %d", &n, &q);
+    int n,q;
+    scanf("%d %d",&n,&q);
 
-    // generate primes
-    sieve();
-    int count = 0;
-    for (int i = 2; i <= n; i++)
+    int arr[n+1];
+
+    for(int i=0;i<n+1;i++)
     {
-        if (is_prime[i])
-        {
-            primes[count++] = i;
-        }
+        arr[i]=0;
     }
 
-    // answer queries
-    for (int i = 0; i < q; i++)
+    for(int i=0;i<n+1;i++)
+    {
+        if(isPrime(i))
+        {
+            arr[i]=1;
+        }
+    }
+    
+    for(int i=1;i<n+1;i++)
+    {
+        arr[i]=arr[i]+arr[i-1];
+    }
+
+    for(int i=0;i<q;i++)
     {
         int x;
-        scanf("%d", &x);
-        int l = 0, r = count - 1, m, ans = -1;
-        while (l <= r)
-        {
-            m = (l + r) / 2;
-            if (primes[m] <= x)
-            {
-                ans = m;
-                l = m + 1;
-            }
-            else
-            {
-                r = m - 1;
-            }
-        }
-        printf("%d ", ans + 1);
-    }
-    printf("\n");
+        scanf("%d",&x);
 
-    return 0;
+        int count = 0;
+
+        count = arr[x];
+        
+        printf("%d ",count);  
+        
+    }
 }

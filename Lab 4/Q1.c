@@ -133,7 +133,6 @@ void newSlot(gym *arr[],int n)
 {
     int count=0;
     gym *new[n];
-    new[0]=arr[0];
 
     for(int i=0;i<n;i++)
     {
@@ -142,13 +141,13 @@ void newSlot(gym *arr[],int n)
         new[i]=temp;
     }
 
+    new[0]=arr[0];
     for(int i=1;i<n;i++)
     {
         if(arr[i]->s <= new[count]->e)
         {
             if(arr[i]->e > new[count]->e)
             new[count]->e=arr[i]->e;
-            // count++;
         }
         else
         {
@@ -162,6 +161,7 @@ void newSlot(gym *arr[],int n)
         printf("%d %d \n",new[i]->s,new[i]->e);
     }
 }
+
 int main()
 {
     int n;

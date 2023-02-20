@@ -64,22 +64,31 @@ int main()
         scanf("%d", &a[i]);
     }
     merge_sort(a, 0, n - 1);
-    int ans = 0;
-    for (int i = 1; i <= n; i++)
+    // int ans = 0;
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     int cnt = 0;
+    //     for (int j = 0; j < n; j++)
+    //     {
+    //         if (a[j] >= i)
+    //         {
+    //             cnt++;
+    //         }
+    //     }
+    //     if (cnt >= i)
+    //     {
+    //         ans = i;
+    //     }
+    // }
+
+    int i = n;
+    for (i=n; i >= 1; i--)
     {
-        int cnt = 0;
-        for (int j = 0; j < n; j++)
+        if ((a[n - i] >= i) && (a[n - i - 1] <= i))
         {
-            if (a[j] >= i)
-            {
-                cnt++;
-            }
-        }
-        if (cnt >= i)
-        {
-            ans = i;
+            break;
         }
     }
-    printf("%d\n", ans);
+    printf("%d\n", i);
     return 0;
 }
