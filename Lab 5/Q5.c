@@ -66,22 +66,27 @@ int main()
                 count--;
             }
             i++;
-
-            continue;
-        }
-        
-        window = j - i + 1;
-        ans = max(ans, window);
-        j++;
-
-        if (j == n)
-        {
-            break;
         }
 
-        if (arr[j] == 0)
+        else
         {
-            count++;
+            j++;
+            if (j == n)
+            {
+                break;
+            }
+
+            if (arr[j] == 0)
+            {
+                count++;
+            }
+
+            window = j - i + 1;
+
+            if(count<=k)
+            {
+                ans = max(ans, window);
+            }
         }
     }
 

@@ -12,35 +12,30 @@ int main()
         scanf("%d",&arr[i]);
     }
 
-
     for(int i=1;i<n;i++)
     {
         arr[i]=arr[i]+arr[i-1];
     }
 
-    for(int i=0;i<n;i++)
-    {
-        arr[i]=arr[i]%k;
-    }
-
     int freq[k];
     
-    for(int i=0;i<k;i++)
+    for(int i=0;i<n;i++)
     {
-        freq[i]=0;
+        freq[arr[i]%k]=0;
     }
 
     for(int i=0;i<n;i++)
     {
-        freq[arr[i]]++;
+        freq[arr[i]%k]++;
     }
 
     int ans=0;
     ans= ans+freq[0];
 
-    for(int i=0;i<k;i++)
+    for(int i=0;i<n;i++)
     {
-        ans=ans+freq[i]*(freq[i]-1)/2;
+        ans=ans+freq[arr[i]%k]*(freq[arr[i]%k]-1)/2;
+        freq[arr[i]%k] =0;
     }
 
     printf("%d",ans);
