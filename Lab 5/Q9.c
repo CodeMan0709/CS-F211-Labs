@@ -7,38 +7,55 @@ int main()
 
     int arr[n];
 
+    int oddCount=0;
+
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
+        if(arr[i]%2==1)
+        {
+            oddCount++;
+        }
     }
 
-    int start = 0;
-    int end = 0;
-    int count = 0;
-    int ans = 0;
+    int odd[oddCount];
 
-    while (end < n)
+    int j=0; 
+    for(int i=0;i<n;i++)
     {
-        if (arr[end] % 2 == 1)
+        if(arr[i]%2==1)
         {
-            count++;
+            odd[j++]=i;
         }
-        while (count == k)
-        {
+    }
 
-            ans++;
-            if (end + 1 < n && arr[end + 1] % 2 == 0)
-            {
-                ans++;
-                end++;
-            }
-            if (arr[start] % 2 == 1)
-            {
-                count--;
-            }
+    int ans =0;
+
+    for(int i=0;i<=oddCount-k;i++)
+    {
+        int temp = i + k -1; 
+        int start = odd[i];
+        int end = -odd[temp];
+
+        if(i==0)
+        {
             start++;
         }
-        end++;
+        else
+        {
+            start = start - odd[i-1];
+        }
+
+        if(temp == oddCount-1)
+        {
+            end = end+n;
+        }
+        else
+        {
+            end = end + odd[temp+1];
+        }
+
+        ans = ans + start*end;
     }
 
     printf("%d", ans);

@@ -12,26 +12,32 @@ int main()
         scanf("%d",&arr[i]);
     }
 
-    int start=0;
-    int end=k-1;
-    int count=0;
-    while(start<end && start<=n-k)
+    if(n<k)
     {
-        int sum = 0 ;
-        int temp = start;
-        while(temp<=end)
-        {
-            sum=sum+arr[temp];
-            temp++;
-        }
-        int avg = sum/k;
-
-        if(avg>=t)
-        count++;
-
-        start++;
-        end++;
+        printf("invalid");
+        return 0;
     }
 
+    int sum = 0;
+    int count=0;
+
+    for(int i=0;i<k;i++)
+    {
+        sum +=arr[i];
+    }
+
+    if((sum/k)>=t)
+    count++;
+    int windowSum = sum;
+
+    for(int i=k;i<n;i++)
+    {
+        windowSum +=arr[i]-arr[i-k];
+        if((windowSum/k)>=t)
+        {
+            count++;
+        }
+    }
+    
     printf("%d",count);
 }
