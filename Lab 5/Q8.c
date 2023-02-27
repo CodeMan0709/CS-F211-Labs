@@ -35,7 +35,7 @@ int main()
     for(int i=0;i<n;i++)
     {
         ans=ans+freq[arr[i]%k]*(freq[arr[i]%k]-1)/2;
-        freq[arr[i]%k] =0;
+        freq[arr[i]%k] = 0;
     }
 
     printf("%d",ans);

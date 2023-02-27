@@ -30,7 +30,6 @@ int main()
     }
 
     int ans =0;
-
     for(int i=0;i<=oddCount-k;i++)
     {
         int temp = i + k -1; 
