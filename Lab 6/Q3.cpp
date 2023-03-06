@@ -22,12 +22,11 @@ int main()
         while (stk.top() != -1 and arr[stk.top()] >= arr[i])
         {
             int current_height = arr[stk.top()];
-            cout<<current_height<<" ";
+            cout << current_height << " ";
             stk.pop();
             int current_width = i - stk.top() - 1;
-            cout<<current_width<<" ";
+            cout << current_width << " ";
             max_area = max(max_area, current_height * current_width);
-
         }
         stk.push(i);
     }
@@ -39,7 +38,7 @@ int main()
         int current_width = n - stk.top() - 1;
         max_area = max(max_area, current_height * current_width);
     }
-    cout<<max_area;
+    cout << max_area;
 }
 
 //     int a[n];
