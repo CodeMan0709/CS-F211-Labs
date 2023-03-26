@@ -33,7 +33,7 @@ int pathSum(TreeNode * root,int x)
 
     int count = 0;
 
-    x = x- root->val;
+    x = x - root->val;
 
     if(x==0 && root->left==NULL && root->right==NULL)
     {

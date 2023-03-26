@@ -20,7 +20,7 @@ int main()
 
     while(k>0)
     {
-        int temp =0;
+        int temp = 0;
 
         if(heap.top()%2)
         temp = heap.top()/2 + 1;
