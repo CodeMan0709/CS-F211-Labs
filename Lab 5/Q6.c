@@ -39,3 +39,59 @@ int main()
     ans = a^b;
     printf("%d",ans);
 }
+
+// #include <iostream>
+// using namespace std;
+// void
+// solve ()
+// {
+//   int a, b;
+//   cin >> a >> b;
+//   if(a==0 && b==0)
+//   {
+//       cout<<"Chefina"<<endl;
+//       return;
+//   }
+//   while (a || b)
+//     {
+//       if (a > 0)
+// 	{
+// 	  a--;
+// 	}
+//       else if (a == 0 && b > 1)
+// 	{
+// 	  b -= 2;
+// 	}
+//       if (b > 0)
+// 	{
+// 	  b--;
+// 	}
+//       else if (b == 0 && a > 1)
+// 	{
+// 	  a -= 2;
+// 	}
+//       if (a == 0 && b <= 1)
+// 	{
+// 	  cout << "Chefina" << endl;
+// 	  break;
+// 	}
+//       else if (b == 0 && a <= 1)
+// 	{
+// 	  cout << "Chef" << endl;
+// 	  break;
+// 	}
+//     }
+// }
+
+// int
+// main ()
+// {
+//   // your code goes here
+//   int t;
+//   cin >> t;
+//   while (t--)
+//     {
+//       solve ();
+//     }
+//   return 0;
+// }

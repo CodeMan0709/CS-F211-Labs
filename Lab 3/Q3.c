@@ -81,14 +81,14 @@ bool findPair(Node * head,int sum)
 
     while(left != right && right->next != left)
     {
-        if(left->data + right->data==sum)
+        if(left->data + right->data ==sum)
         {
-        ans=1;
-        printf("%d %d \n",left->data,right->data);
-        return ans;
+            ans=1;
+            printf("%d %d \n",left->data,right->data);
+            return ans;
         }
 
-        else if(left->data + right->data<sum)
+        else if(left->data + right->data <sum)
         {
             left=left->next;
         }

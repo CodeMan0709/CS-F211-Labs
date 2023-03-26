@@ -38,10 +38,10 @@ Node *readList()
 {
     long long int n;
     scanf("%lld", &n);
-    if(n==1)
+    if (n == 1)
     {
-    printf("2 Teams not possible");
-    return NULL;
+        printf("2 Teams not possible");
+        return NULL;
     }
     Node *head = NULL;
     for (long long int i = 0; i < n; ++i)
@@ -77,46 +77,45 @@ void twoTeam(Node *head)
     Node *temp = head;
     Node *curleft = head;
     Node *curright = head;
-    int check=0;
+    int check = 0;
+
     while (curright->next != NULL)
     {
         curright = curright->next;
     }
+    
     int left = 1, right = 1;
     int lsum = curleft->data;
     int rsum = curright->data;
+    int lfinal=0,rfinal=0;
 
     while (curleft != curright)
     {
-
-        if (lsum == rsum)
+        if (lsum < rsum)
         {
-            while(curleft->next->data == curright->prev->data && curleft->next != curright && curright->prev != curleft)
-            {
-                curleft=curleft->next;
-                curright=curright->prev;
-                left++;
-                right++;
-            }
-            printf("%d %d", left, right);
-            check=1;
-            break;
-        }
-        else if(lsum<rsum)
-        {
-            curleft=curleft->next;
+            curleft = curleft->next;
             lsum = lsum + curleft->data;
             left++;
         }
-        else
+        else if(lsum > rsum)
         {
             curright = curright->prev;
-            rsum = rsum +curright->data;
+            rsum = rsum + curright->data;
             right++;
         }
+        else if(lsum == rsum)
+        {
+            lfinal=left;
+            rfinal=right;
+            curleft = curleft->next;
+            lsum = lsum + curleft->data;
+            left++;
+            // curright = curright->prev;
+            // rsum = rsum + curright->data;
+            // right++;
+        }
     }
-    if(check==0)
-    printf("NOT POSSIBLE");
+    printf("%d %d", lfinal, rfinal);
 }
 
 int main()

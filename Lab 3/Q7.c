@@ -6,10 +6,12 @@ int binarySearch(int arr[], int l, int r, int x)
     {
         int m = l + (r - l) / 2;
 
-        if (arr[m] <= x)
+        if (arr[m] < x)
             l = m + 1;
-        else
+        else if(arr[m] > x)
             r = m - 1;
+        else if(arr[m]==x)
+            return m+1;    
     }
     return l;
 }

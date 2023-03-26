@@ -40,24 +40,24 @@ Node * enqueue(Node * front,Node * rear,int data)
     return rear;
 }
 
-Node * dequeue(Node * front,Node * rear,int data)
-{
-    if(front==NULL)
-    {
-        return front;
-    }
-    else
-    {
-        Node * temp = front;
-        front = front ->next;
-        free(temp);
+// Node * dequeue(Node * front,Node * rear,int data)
+// {
+//     if(front==NULL)
+//     {
+//         return front;
+//     }
+//     else
+//     {
+//         Node * temp = front;
+//         front = front ->next;
+//         free(temp);
 
-        front->prev=rear;
-        rear->next =front;
-    }
+//         front->prev=rear;
+//         rear->next =front;
+//     }
 
-    return front;
-}
+//     return front;
+// }
 
 Node * iterate(Node * front,Node * rear,int k)
 {

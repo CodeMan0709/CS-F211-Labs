@@ -36,7 +36,7 @@ int main()
 
     int maxzero= trailing_zeros(m);
 
-    if(m==1 || maxzero==0)
+    if(maxzero==0)
     {
         maxzero=n;
     }
