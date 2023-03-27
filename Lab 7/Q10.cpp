@@ -37,11 +37,22 @@ int main()
 
     priority_queue<pair<int,pair<int,int>>> c;
 
+    int check[n][n]={0};
+
     c.push(make_pair(arr[0]+brr[0],make_pair(0,0)));
 
     for(int i=0;i<k;i++)
     {
         pair<int,pair<int,int>> temp = c.top();
+
+        if(check[temp.second.first][temp.second.second]==1)
+        {
+            c.pop();
+            i--;
+            continue;
+        }
+
+        check[temp.second.first][temp.second.second] = 1;
         cout<<temp.first<<" ";
         c.pop();       
         c.push(make_pair(arr[temp.second.first]+brr[temp.second.second + 1],make_pair(temp.second.first,temp.second.second +1)));
