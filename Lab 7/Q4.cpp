@@ -34,15 +34,14 @@ void modify(TreeNode *root, int *sum)
     modify(root->right, sum);
     *sum = *sum + root->val;
     root->val = *sum;
-
     modify(root->left, sum);
 }
 
-void change(TreeNode *root)
-{
-    int sum = 0;
-    modify(root, &sum);
-}
+// void change(TreeNode *root)
+// {
+//     int sum = 0;
+//     modify(root, &sum);
+// }
 
 // void inorder(TreeNode *root)
 // {
@@ -76,7 +75,9 @@ int main()
     }
 
     TreeNode *root = construct_tree(arr, 1, n);
-    change(root);
+    int sum=0;
+    modify(root,&sum);
+    // change(root);
     // inorder(root);
 
     storearr(root,arr,0);

@@ -35,6 +35,28 @@ void postOrder(TreeNode * root)
     cout<<root->val<<" ";
 }
 
+TreeNode *beauty(TreeNode * root,int l,int r)
+{
+    if(root==NULL)
+    return NULL;
+
+    if(root->val >=l && root->val <=r)
+    {
+        root->left = beauty(root->left,l,r);
+        root->right = beauty(root->right,l,r);
+    }
+    else if(root->val >=l && root->val >r)
+    {
+        root = beauty(root->left,l,r);
+    }
+    else if(root->val<l && root->val <=r)
+    {
+        root = beauty(root->right,l,r);
+    }
+
+    return root;
+}
+
 int main()
 {
     int n, l, r;
@@ -49,45 +71,6 @@ int main()
     }
 
     TreeNode *root = convert(arr, 0, n);
-
-    while (root != NULL && root->val < l)
-    {
-        root = root->right;
-    }
-
-    while (root != NULL && root->val > r)
-    {
-        root = root->left;
-    }
-    // cout<<root->val;
-
-    TreeNode *temp = root;
-
-    while (temp->left != nullptr && temp->left->val >= l)
-    {
-        temp = temp->left;
-    }
-
-    while (temp != NULL && temp->left != NULL && temp->left->val < l)
-    {
-        TreeNode *delhelp = temp->left;
-        temp->left = temp->left->right;
-        delete (delhelp);
-    }
-
-    temp = root;
-
-    while (temp->right != nullptr && temp->right->val <= r)
-    {
-        temp = temp->right;
-    }
-
-    while (temp->right != NULL && temp->right->val > r)
-    {
-        TreeNode *delhelp = temp->right;
-        temp->right = temp->right->left;
-        delete (delhelp);
-    }
-
-    postOrder(root);
+    TreeNode * ans = beauty(root,l,r);
+    postOrder(ans);
 }
