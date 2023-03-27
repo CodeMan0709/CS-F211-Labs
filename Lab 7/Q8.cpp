@@ -25,13 +25,13 @@ TreeNode *convert(int arr[], int i, int n)
     return root;
 }
 
-void preOrder(TreeNode * root)
+void postOrder(TreeNode * root)
 {
     if(root==NULL)
     return;
 
-    preOrder(root->left);
-    preOrder(root->right);
+    postOrder(root->left);
+    postOrder(root->right);
     cout<<root->val<<" ";
 }
 
@@ -89,5 +89,5 @@ int main()
         delete (delhelp);
     }
 
-    preOrder(root);
+    postOrder(root);
 }

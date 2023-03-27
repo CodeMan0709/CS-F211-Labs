@@ -35,13 +35,13 @@ int tree_height(TreeNode *root)
             return right_height + 1;
     }
 }
-void createMap(int in[], map<int, int> &nodeToIndex, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        nodeToIndex[in[i]] = i;
-    }
-}
+// void createMap(int in[], map<int, int> &nodeToIndex, int n)
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         nodeToIndex[in[i]] = i;
+//     }
+// }
 
 TreeNode *generateTree(int in[], int pre[], int &index, int ins, int ine, int size, map<int, int> &nodeToIndex)
 {
@@ -89,10 +89,17 @@ int main()
         cin >> in[i];
     }
 
-    int preIndex = 0;
 
     map<int, int> nodeToIndex;
-    createMap(in, nodeToIndex, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        nodeToIndex[in[i]] = i;
+    }
+
+    // createMap(in, nodeToIndex, n);
+
+    int preIndex = 0;
     TreeNode *a = generateTree(in, pre, preIndex, 0, n - 1, n, nodeToIndex);
     int h = tree_height(a);
 
