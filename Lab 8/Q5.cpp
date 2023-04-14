@@ -1,5 +1,4 @@
-//Gaurav pro such chad solution
-
+// Gaurav pro such chad solution
 #include <iostream>
 #include <map>
 #include <unordered_map>

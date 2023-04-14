@@ -17,16 +17,16 @@ int main()
     int x,y;
     cin>>x>>y;
 
-    int yrr[n];
-    for(int j=0;j<n;j++)
-    {
-        yrr[j] = arr[j] - y*j;
-    }
-
     int xrr[n];
     for(int i=0;i<n;i++)
     {
         xrr[i]=arr[i]-x*i;
+    }
+
+    int yrr[n];
+    for(int j=0;j<n;j++)
+    {
+        yrr[j] = arr[j] - y*j;
     }
 
     int answer=0;
@@ -37,6 +37,7 @@ int main()
     {
         mp[x]++;
     }
+    
     for(int i=0;i<n;i++)
     {
         mp[yrr[i]]--;
