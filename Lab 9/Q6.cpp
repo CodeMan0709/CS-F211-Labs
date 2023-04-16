@@ -15,9 +15,10 @@ int main()
     }
 
     int ans=0;
-    for(int i=0;i<n;i++)
+    
+    for(auto x:mp)
     {
-        auto it = mp.upper_bound(arr[i]+k-1);
+        auto it = mp.upper_bound(x.first+k-1);
 
         if(it!=mp.end())
         {
@@ -25,5 +26,6 @@ int main()
             ans++;
         }
     }
+
     cout<<ans;
 }
