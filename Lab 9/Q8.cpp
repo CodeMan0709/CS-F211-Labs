@@ -14,7 +14,7 @@ bool allocationPossible(int mid,int student,int book,int page[])
         if(page[i]+pages > mid)
         {
             allocatedStudents++;
-            pages+=page[i];
+            pages=page[i];
         }
         else
         {
