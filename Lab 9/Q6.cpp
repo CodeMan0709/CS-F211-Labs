@@ -6,56 +6,55 @@ int main()
     int n, k;
     cin >> n >> k;
     int arr[n];
-    map<int,int> mp;
 
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
-        mp[arr[i]]++;
     }
 
     int ans=0;
 
-    for(auto x:mp)
-    {
-        auto it = mp.upper_bound(x.first+k-1);
+    sort(arr,arr+n);
 
-        if(it!=mp.end())
+    if(n%2==0)
+    {
+        int a=0;
+        int b=n/2;
+        
+        while(a<n/2 && b<n)
         {
-            if(x.second>1)
+            if(arr[b]-arr[a] >= k)
             {
-                (x.second)--;
                 ans++;
+                b++;
+                a++;
             }
             else
             {
-                mp.erase(it);
-                ans++;
+                b++;
             }
+        }
+    }
+    else
+    {
+        int a=0;
+        int b = n/2+1;
 
+        while(a<n/2 && b<n)
+        {
+            if(arr[b]-arr[a] >= k)
+            {
+                ans++;
+                a++;
+                b++;
+            }
+            else
+            {
+                b++;
+            }
         }
     }
 
-    cout<<ans;
+    cout<<ans<<endl;
 
-    // sort(arr, arr + n);
-
-    // int start = 0;
-    // int end = 1;
-    // int answer = 0;
-
-    // while (start <= end && end < n)
-    // {
-    //     if (arr[end] - arr[start] < k)
-    //     {
-    //         end++;
-    //     }
-    //     else
-    //     {
-    //         answer++;
-    //         start++;
-    //         end++;
-    //     }
-    // }
-    // cout << answer;
 }
