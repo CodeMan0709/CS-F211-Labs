@@ -6,59 +6,38 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    vector<int> a(n), b(m);
-    int sum_a = 0, sum_b = 0;
+    int arr[n];
+    int brr[m];
 
-    for (int i = 0; i < n; i++)
+    map<int,int> mp;
+    int sumA=0,sumB=0;
+
+    for(int i=0;i<n;i++)
     {
-        cin >> a[i];
-        sum_a += a[i];
+        cin>>arr[i];
+        sumA+=arr[i];
     }
 
-    for (int i = 0; i < m; i++)
+    for(int i=0;i<m;i++)
     {
-        cin >> b[i];
-        sum_b += b[i];
+        cin>>brr[i];
+        sumB+=brr[i];
+        mp[brr[i]]=1;
     }
 
-    if (sum_a == sum_b)
+    for(int i=0;i<n;i++)
     {
-        cout << "Yes" << endl;
-        return 0;
-    }
+        int bi = (sumB-sumA)/2 + arr[i];
 
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-
-    int i = 0, j = 0;
-    while (i < n && j < m)
-    {
-        int diff = sum_a - a[i] + b[j] - (sum_b - b[j] + a[i]);
-        if (diff == 0)
+        if(mp.find(bi)!=mp.end() && ((sumB-sumA+2*arr[i])%2==0))
         {
-            cout << "Yes" << endl;
-            return 0;
-        }
-        else if (diff < 0)
-        {
-            i++;
-        }
-        else
-        {
-            j++;
-        }
-    }
-
-    if (i < n && j < m)
-    {
-        int diff = sum_a - a[i] + b[j] - (sum_b - b[j] + a[i]);
-        if (diff == 0)
-        {
-            cout << "Yes" << endl;
+            cout<<"Yes";
             return 0;
         }
     }
 
-    cout << "No" << endl;
+    cout<<"No";
+
+
     return 0;
 }

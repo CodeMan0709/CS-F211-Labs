@@ -7,6 +7,7 @@ int main()
 
     int arr[a];
     int brr[b];
+    
     for (int i = 0; i < a; i++)
     {
         cin >> arr[i];
