@@ -26,6 +26,7 @@ int maxi(int arr[],int n)
     }
     return mi;
 }
+
 int main()
 {
     int n;
@@ -37,24 +38,31 @@ int main()
     {
         cin>>arr[i];
     }
-    int count=0;
+
+    vector<int> res;
+
     for(int i=n;i>1;i--)
     {
         int maxindex=maxi(arr,i);
 
         if(maxindex != i-1)
         {
-            flip(arr,maxindex);
+            if(maxindex!=0)
+            {
+                res.push_back(maxindex);
+                flip(arr,maxindex);
+            }
+
+            res.push_back(i-1);
             flip(arr,i-1);
-            count++;
         }
     }
 
-    cout<<count<<endl;
+    cout<<res.size()<<endl; 
 
-    for(int i=0;i<n;i++)
+    for(int i=0;i<res.size();i++)
     {
-        cout<<arr[i]<<" "; 
+        cout<<res[i]+1<<" "; 
     }
     return 0;
 }
