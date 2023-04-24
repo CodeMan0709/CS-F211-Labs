@@ -1,70 +1,61 @@
-#include <bits/stdc++.h>
+//Striver op
+#include<bits/stdc++.h>
 using namespace std;
 
-void merge(int arr[],int start,int mid,int end,int *ans)
+int merge(int arr[],int temp[],int left,int mid,int right)
 {
-    int len1 = mid-start+1;
-    int len2 = end-mid;
+    int i,j,k;
+    int count=0;
 
-    int a[len1];
-    int b[len2];
+    i=left;
+    j=mid;
+    k=left;
 
-    for(int i=0;i<len1;i++)
+    while(i<=mid && j<=right)
     {
-        a[i]=arr[start+i];
-    }
-
-    for(int i=0;i<len2;i++)
-    {
-        b[i]=arr[mid+i+1];
-    }
-
-    int l=0,r=0,k=start;
-
-    while(l<len1 && r<len2)
-    {
-        if(a[l]<=b[r])
+        if(arr[i]<=arr[j])
+        temp[k++]=arr[i++];
+        else
         {
-            arr[k]=a[l];
-            k++;
-            l++;
-        }
-        else if(a[l] > b[r])
-        {
-            arr[k]=b[r];
-            k++;
-            r++;
-            (*ans)+=r-l;
-        }
+            temp[k++]=arr[j++];
+            count+=mid-i;
+        }    
     }
 
-    while(l<len1)
+    while(i<=mid-1)
     {
-        arr[k]=a[l];
-        k++;
-        l++;
+        temp[k++]=arr[i++];
     }
-    while(r<len2)
+
+    while(j<=right)
     {
-        arr[k]=b[r];
-        k++;
-        r++;
+        temp[k++]=arr[j++];
     }
+
+    for(i=left;i<=right;i++)
+    {
+        arr[i]=temp[i];
+    }
+
+    return count;
 }
 
-void mergeSort(int arr[],int left,int right,int* ans)
+int mergeSort(int arr[],int temp[],int left,int right)
 {
+    int mid,count=0;
     if(left<right)
     {
-        int mid = (left+right)/2;
-        mergeSort(arr,left,mid,ans);
-        mergeSort(arr,mid+1,right,ans);
-        merge(arr,left,mid,right,ans);
-    }
-}
+        mid = (right+left)/2;
 
+        count+=mergeSort(arr,temp,left,mid);
+        count+=mergeSort(arr,temp,mid+1,right);
+        count+=merge(arr,temp,left,mid+1,right);
+    }
+    return count;
+}
 int main()
 {
+    
     int n;
     cin >> n;
     int arr[n];
@@ -74,9 +65,9 @@ int main()
         cin >> arr[i];
     }
 
-    int ans=0;
-    mergeSort(arr,0,n,&ans);
-    cout<<ans;
+    int temp[n];
 
+    int ans= mergeSort(arr,temp,0,n-1);
+    cout<<ans;
     return 0;
 }
