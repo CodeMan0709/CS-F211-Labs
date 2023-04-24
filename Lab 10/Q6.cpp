@@ -22,7 +22,7 @@ int merge(int arr[],int temp[],int left,int mid,int right)
         }    
     }
 
-    while(i<=mid-1)
+    while(i<mid)
     {
         temp[k++]=arr[i++];
     }
@@ -46,7 +46,6 @@ int mergeSort(int arr[],int temp[],int left,int right)
     if(left<right)
     {
         mid = (right+left)/2;
-
         count+=mergeSort(arr,temp,left,mid);
         count+=mergeSort(arr,temp,mid+1,right);
         count+=merge(arr,temp,left,mid+1,right);
